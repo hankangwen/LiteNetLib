@@ -10,7 +10,9 @@ public class KervenServer : MonoBehaviour, INetEventListener, INetLogger
     private NetManager _netServer;
     private NetPeer _ourPeer;
     private NetDataWriter _dataWriter;
-    private const int MaxClientConnections = 10;
+    private const int MaxClientConnections = 10;// 最大连接数
+    private const int Port = 2050;
+    private const string ConnectKey = "sample_app";
 
     [SerializeField] private GameObject _serverBall;
 
@@ -19,7 +21,7 @@ public class KervenServer : MonoBehaviour, INetEventListener, INetLogger
         NetDebug.Logger = this;
         _dataWriter = new NetDataWriter();
         _netServer = new NetManager(this);
-        _netServer.Start(80);
+        _netServer.Start(Port);
         _netServer.BroadcastReceiveEnabled = true;
         _netServer.UpdateTime = 15;
     }
@@ -82,7 +84,7 @@ public class KervenServer : MonoBehaviour, INetEventListener, INetLogger
     void INetEventListener.OnConnectionRequest(ConnectionRequest request)
     {
         if(_netServer.ConnectedPeersCount < MaxClientConnections)
-            request.AcceptIfKey("sample_app");
+            request.AcceptIfKey(ConnectKey);
         else
             request.Reject();
     }

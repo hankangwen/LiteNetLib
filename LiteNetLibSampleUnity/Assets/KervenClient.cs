@@ -6,6 +6,9 @@ using UnityEngine;
 public class KervenClient : MonoBehaviour, INetEventListener
 {
     private NetManager _netClient;
+    private const string IpAddress = "localhost";// 8.138.136.204
+    private const int Port = 2050;
+    private const string ConnectKey = "sample_app";
 
     [SerializeField] private GameObject _clientBall;
     [SerializeField] private GameObject _clientBallInterpolated;
@@ -20,13 +23,7 @@ public class KervenClient : MonoBehaviour, INetEventListener
         _netClient.UnconnectedMessagesEnabled = true;
         _netClient.UpdateTime = 15;
         _netClient.Start();
-
-        // remote aliyun
-        // _netClient.Connect("8.138.136.204", 80, "sample_app");
-        // local
-        // _netClient.Connect("10.11.176.107", 80, "sample_app");
-        // _netClient.Connect("fe80::2ef9:6833:20fa:d34e%4", 80, "sample_app");
-        _netClient.Connect("127.0.0.1", 80, "sample_app");
+        _netClient.Connect(IpAddress, Port, ConnectKey);
     }
 
     private void Update()

@@ -19,7 +19,7 @@ public class KervenServer : MonoBehaviour, INetEventListener, INetLogger
         NetDebug.Logger = this;
         _dataWriter = new NetDataWriter();
         _netServer = new NetManager(this);
-        _netServer.Start(9050);
+        _netServer.Start(80);
         _netServer.BroadcastReceiveEnabled = true;
         _netServer.UpdateTime = 15;
     }

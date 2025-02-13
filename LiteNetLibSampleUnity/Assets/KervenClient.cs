@@ -21,7 +21,12 @@ public class KervenClient : MonoBehaviour, INetEventListener
         _netClient.UpdateTime = 15;
         _netClient.Start();
 
-        // _netClient.Connect("localhost" /* host ip or name */, 9050 /* port */, "sample_app" /* text key or NetDataWriter */);
+        // remote aliyun
+        _netClient.Connect("8.138.136.204", 80, "sample_app");
+        // local
+        // _netClient.Connect("10.11.176.107", 80, "sample_app");
+        // _netClient.Connect("fe80::2ef9:6833:20fa:d34e%4", 80, "sample_app");
+        // _netClient.Connect("127.0.0.1", 80, "sample_app");
     }
 
     private void Update()
@@ -41,7 +46,7 @@ public class KervenClient : MonoBehaviour, INetEventListener
         }
         else
         {
-            _netClient.SendBroadcast(new byte[] {1}, 9050);
+            _netClient.SendBroadcast(new byte[] {1}, 80);
         }
     }
 

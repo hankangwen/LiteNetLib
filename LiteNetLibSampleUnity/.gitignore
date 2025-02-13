@@ -29,6 +29,7 @@
 /[Tt]emp/
 /[Bb]uild/
 /[Bb]uilds/
+/[Bb]uildClients/
 
 # Unity VSCode
 /.vscode/

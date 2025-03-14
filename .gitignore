@@ -228,3 +228,5 @@ ModelManifest.xml
 .idea/
 *.sln.iml
 **/*.vscode
+LiteNetLibSampleUnity/UserSettings/Layouts/default-2022.dwlt
+LiteNetLibSampleUnityServer/UserSettings/Layouts/default-2022.dwlt
